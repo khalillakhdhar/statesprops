@@ -47,10 +47,10 @@ App.propTypes = {
   propString: PropTypes.string,
   }
   App.defaultProps = {
-  propArray: [1,2,3,4,5],
-  propBool: true,
+  propArray: "[1,2,3,4,5]",
+  propBool: "teste",
   propFunc: function(x){return x+5},
-  propNumber: 1,
+  propNumber: "22A",
   propString: "react js",
   }
   export default App;
