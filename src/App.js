@@ -1,40 +1,56 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 class App extends React.Component {
-constructor() {
-super();
-//let etat=true; (instable)=> perte de valeur lors de l'actualisation
-this.state = { displayBio: false }; // stateful component qui preserve l'etat si le component est chargé
-console.log('Component this', this);
-this.toggleBio = this.toggleBio.bind(this); // actualisation par rapport à l'éta
-// bind pour force la relecture de nouvelle valeur
-
-}
-toggleBio(){
-  this.setState({displayBio: !this.state.displayBio});
-  }
-  // Il est recommander de placer les méthodes personalisées aprés le constructeur et avant le render
-
 render() {
-const bio = this.state.displayBio ? (
-<div>
-<p><h3>React is one of the best js libraries.</h3></p>
-</div>
-) : null;
 return (
 <div>
-<h1>Welcome to React!!</h1>
-{
-this.state.displayBio ? (
-<div>
-<p><h4>{ this.props.librairie } is wonderfull.</h4></p>
-<button onClick={this.toggleBio}> Show Less </button>
-</div>
-) : (
-<div>
-<button onClick={this.toggleBio}> Read More </button>
-</div>
-)
+<h1>ReactJS Props validation example</h1>
+<table>
+<tr>
+<th>Type</th>
+<th>Value</th>
+<th>Valid</th>
+</tr>
+<tr>
+<td>Array</td>
+<td>{this.props.propArray}</td>
+<td>{this.props.propArray ? "true" : "False"}</td>
+</tr>
+<tr><td>Boolean</td>
+<td>{this.props.propBool ? "true" : "False"}</td>
+<td>{this.props.propBool ? "true" : "False"}</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>{this.props.propFunc(5)}</td>
+<td>{this.props.propFunc(5) ? "true" : "False"}</td>
+</tr>
+<tr>
+<td>String</td>
+<td>{this.props.propString}</td>
+<td>{this.props.propString ? "true" : "False"}</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>{this.props.propNumber}</td>
+<td>{this.props.propNumber ? "true" : "False"}</td>
+</tr>
+</table></div>
+);
 }
-</div>
-) } }
-export default App;
+}
+App.propTypes = {
+  propArray: PropTypes.array.isRequired,
+  propBool: PropTypes.bool.isRequired,
+  propFunc: PropTypes.func,
+  propNumber: PropTypes.number,
+  propString: PropTypes.string,
+  }
+  App.defaultProps = {
+  propArray: [1,2,3,4,5],
+  propBool: true,
+  propFunc: function(x){return x+5},
+  propNumber: 1,
+  propString: "react js",
+  }
+  export default App;
