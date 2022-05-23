@@ -8,10 +8,7 @@ value: 'www.reactjs.org'
 this.handleEvent = this.handleEvent.bind(this);
 this.handleInputChange = this.handleInputChange.bind(this);
 }
-setData(event)
-{
-  this.setState({value:event.target.value});
-}
+
 handleEvent(){
 console.log("props",this.props);
 console.log("states",this.state);
