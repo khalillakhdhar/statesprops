@@ -3,7 +3,9 @@ class App extends React.Component {
 constructor(props) {
 super(props);
 //let etat=true; (instable)=> perte de valeur lors de l'actualisation
-this.state = { name: "react" }; // stateful component qui preserve l'etat si le component est chargé
+this.state = { name: "react" }; 
+
+// stateful component qui preserve l'etat si le component est chargé
 
 // bind pour force la relecture de nouvelle valeur
 
